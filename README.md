@@ -4,4 +4,6 @@ This repository serves as my dedicated space for practicing and exploring variou
 
 Feel free to explore the code in each file to gain insights into the JavaScript topics I'm currently practicing. If you have suggestions, improvements, or just want to connect and discuss JavaScript, don't hesitate to reach out!
 
+Explore my blogs here [justCodingThings.com](https://justcodingthings.com/)
+
 Happy coding! 🚀
