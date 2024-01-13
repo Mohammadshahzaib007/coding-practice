@@ -4,12 +4,15 @@ function swap(list, idx1, idx2) {
 }
 
 function bubbleSort(list) {
+  let noSwaps = true;
   for (let i = list.length; i > 0; i--) {
     for (let j = 0; j < i - 1; j++) {
       if (list[j] > list[j + 1]) {
         swap(list, j, j + 1);
+        noSwaps = false;
       }
     }
+    if (noSwaps) break;
   }
   return list;
 }
