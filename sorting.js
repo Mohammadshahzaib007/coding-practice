@@ -57,7 +57,8 @@ function merge(arr1, arr2) {
   let results = [];
   let i = 0;
   let j = 0;
-  while (i < arr1.length && j < arr2.length) { // Merging two sorted arrays
+  while (i < arr1.length && j < arr2.length) {
+    // Merging two sorted arrays
     if (arr2[j] > arr1[i]) {
       results.push(arr1[i]);
       i++;
@@ -84,4 +85,20 @@ function mergeSort(arr) {
   let right = mergeSort(arr.slice(mid));
   return merge(left, right); // At the end meging left and right array
 }
-console.log(mergeSort([10, 24, 76, 73])); // [ 10, 24, 73, 76 ]
+// console.log(mergeSort([10, 24, 76, 73])); // [ 10, 24, 73, 76 ]
+
+// Quick Sort
+function pivot(arr, start = 0, end = arr.length - 1) {
+  let pivot = arr[start];
+  var swapIdx = start;
+  for (let i = start + 1; i < arr.length; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      swap(arr, swapIdx, i);
+    }
+  }
+  swap(arr, start, swapIdx);
+  return swapIdx;
+}
+
+console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
