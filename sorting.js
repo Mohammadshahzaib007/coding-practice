@@ -57,7 +57,7 @@ function merge(arr1, arr2) {
   let results = [];
   let i = 0;
   let j = 0;
-  while (i < arr1.length && j < arr2.length) {
+  while (i < arr1.length && j < arr2.length) { // Merging two sorted arrays
     if (arr2[j] > arr1[i]) {
       results.push(arr1[i]);
       i++;
@@ -76,5 +76,12 @@ function merge(arr1, arr2) {
   }
   return results;
 }
-
-console.log(merge([1, 10, 50], [2, 14, 99, 100]));
+// justCodingThings.com
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr; // Base case if lenght of the arr is equal or less then 1 return arr
+  let mid = Math.floor(arr.length / 2); // dividing array into two pieces from middle
+  let left = mergeSort(arr.slice(0, mid)); // passing the left side to mergeSort again and same for the right (Recursion mechanism)
+  let right = mergeSort(arr.slice(mid));
+  return merge(left, right); // At the end meging left and right array
+}
+console.log(mergeSort([10, 24, 76, 73])); // [ 10, 24, 73, 76 ]
