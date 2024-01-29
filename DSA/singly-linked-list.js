@@ -56,10 +56,27 @@ class SinglyLinkedList {
     this.tail.next = null;
     this.length--;
     if (this.length === 0) {
-      this.head = 0;
-      this.tail = 0;
+      this.head = null;
+      this.tail = null;
     }
     return current;
+  }
+
+  shift() {
+    // if there are no nodes return undefined
+    // Store the current head property in a variable.
+    // Set the head property to be the current head's next property
+    // Decrement the length by 1
+    // Return the value of the removed node
+    if (!this.head) return undefined;
+    let temp = this.head;
+    this.head = temp.next;
+    temp.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return temp;
   }
 }
 
@@ -68,4 +85,6 @@ const list = new SinglyLinkedList();
 list.push("mohammad");
 list.push("shahzaib");
 list.push("coder");
-console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.shift());
+console.log(list);
