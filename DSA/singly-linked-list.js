@@ -118,6 +118,18 @@ class SinglyLinkedList {
 
     return curr;
   }
+
+  set(index, val) {
+    // This function should accept a value and index.
+    // Use your get function to find the specific node
+    // If the node is not found, return false
+    // If the node is found, set the value of that node to be the value passed to the function and return true
+
+    const foundNode = this.get(index);
+    if (!foundNode) return false;
+    foundNode.val = val;
+    return true;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -130,4 +142,4 @@ list.push("indie hacker");
 // console.log(list.pop());
 // console.log(list.shift());
 // list.unshift("The")
-console.log(list.get(2));
+console.log(list);
