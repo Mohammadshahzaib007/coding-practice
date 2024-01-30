@@ -101,6 +101,23 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    // This function should accept an index
+    // If the index is less than zero or greater than or equal to the lenght of the list, return null
+    // Loop through the list until you reach the index and return the node at that specific index.
+
+    if (index < 0 || index >= this.length) return null;
+
+    let count = 0;
+    let curr = this.head;
+    while (index !== count) {
+      curr = curr.next;
+      count++;
+    }
+
+    return curr;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -108,7 +125,9 @@ const list = new SinglyLinkedList();
 list.push("mohammad");
 list.push("shahzaib");
 list.push("coder");
+list.push("sass");
+list.push("indie hacker");
 // console.log(list.pop());
 // console.log(list.shift());
 // list.unshift("The")
-console.log(list);
+console.log(list.get(2));
