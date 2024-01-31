@@ -130,6 +130,31 @@ class SinglyLinkedList {
     foundNode.val = val;
     return true;
   }
+
+  insert(index, val) {
+    // If the index is less than zero or greater than the length, return false
+    // If the index is the same as the length, push a new node to the end of the list
+    // If the index is 0, unshift a new node to the start of the list
+    // Otherwise, using the get method, access the node at the index - 1
+    // Set the next property on that node to be the new node.
+    // Set the next property on the new node to be the previous next
+    // Increment the length
+    // Return true
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return this.push(val);
+    if (index === 0) return this.unshift(val);
+
+    const newNode = new Node(val);
+    const prevNode = this.get(index - 1);
+
+    const temp = prevNode.next;
+    prevNode.next = newNode;
+    newNode.next = temp;
+
+    this.length++;
+
+    return true;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -142,4 +167,5 @@ list.push("indie hacker");
 // console.log(list.pop());
 // console.log(list.shift());
 // list.unshift("The")
+list.insert(1, "khan");
 console.log(list);
