@@ -141,8 +141,14 @@ class SinglyLinkedList {
     // Increment the length
     // Return true
     if (index < 0 || index > this.length) return false;
-    if (index === this.length) return this.push(val);
-    if (index === 0) return this.unshift(val);
+    if (index === this.length) {
+      this.push(val);
+      return true;
+    }
+    if (index === 0) {
+      this.unshift(val);
+      return true;
+    }
 
     const newNode = new Node(val);
     const prevNode = this.get(index - 1);
