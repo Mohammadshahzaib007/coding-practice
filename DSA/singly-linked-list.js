@@ -180,6 +180,43 @@ class SinglyLinkedList {
     this.length--;
     return removedNode;
   }
+
+  reverse() {
+    // Swap the head and tail
+    // Create a variable called next
+    // Create a variable called prev
+    // Create a variable called node and initialize it to the head property
+    // Loop through the list
+    // Set next to be the next property on whatever node is
+    // Set the next property on the node to be whatever prev is
+    // Set the prev to be the value of the node variable
+    // Set the node variable to be the value of the next variable
+    let tempHead = this.head;
+    this.head = this.tail;
+    this.tail = tempHead;
+
+    let next = null;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = tempHead.next;
+      tempHead.next = prev;
+      prev = tempHead;
+      tempHead = next;
+    }
+
+    return this;
+  }
+
+  // just a helper method
+  print() {
+    let arr = [];
+    let curr = this.head;
+    while (curr) {
+      arr.push(curr.val);
+      curr = curr.next;
+    }
+    console.log(arr);
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -194,5 +231,7 @@ list.push("indie hacker");
 // list.unshift("The")
 // list.insert(1, "khan");
 // list.remove(1);
-
-console.log(list);
+list.print();
+list.reverse();
+list.print();
+// console.log(list);
