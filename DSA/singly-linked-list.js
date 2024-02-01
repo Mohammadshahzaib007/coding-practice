@@ -161,6 +161,25 @@ class SinglyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    // If the index is less than zero or greater than the length, return undefined
+    // If the index is the same as the length-1, pop,
+    // If the index is 0, shift
+    // Otherwise, using the get method, access the node at the index - 1
+    // Set the next property on that node to be the next of the next node
+    // Decrement the length
+    // Return the value of the node removed
+    if (index < 0 || index > this.length) return undefined;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+
+    const prevNode = this.get(index - 1);
+    const removedNode = this.get(index);
+    prevNode.next = removedNode.next;
+    this.length--;
+    return removedNode;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -174,4 +193,5 @@ list.push("indie hacker");
 // console.log(list.shift());
 // list.unshift("The")
 list.insert(1, "khan");
+list.remove(1)
 console.log(list);
