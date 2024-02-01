@@ -175,7 +175,7 @@ class SinglyLinkedList {
     if (index === 0) return this.shift();
 
     const prevNode = this.get(index - 1);
-    const removedNode = this.get(index);
+    const removedNode = prevNode.next;
     prevNode.next = removedNode.next;
     this.length--;
     return removedNode;
@@ -192,6 +192,7 @@ list.push("indie hacker");
 // console.log(list.pop());
 // console.log(list.shift());
 // list.unshift("The")
-list.insert(1, "khan");
-list.remove(1)
+// list.insert(1, "khan");
+// list.remove(1);
+
 console.log(list);
