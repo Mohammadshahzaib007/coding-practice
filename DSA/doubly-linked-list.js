@@ -38,6 +38,7 @@ class DoublyLinkedList {
     } else {
       this.tail = temp.prev;
       this.tail.next = null;
+      temp.prev = null;
     }
 
     this.length--;
