@@ -78,11 +78,24 @@ class DoublyLinkedList {
   get(index) {
     if (index === 0 || index >= this.length) return null;
 
-    let count = 0;
-    let curr = this.head;
-    while (index !== count) {
-      curr = curr.next;
-      count++;
+    const middle = Math.floor((this.length - 1) / 2);
+
+    let curr;
+
+    if (index > middle) {
+      let count = this.length - 1;
+      curr = this.tail;
+      while (index !== count) {
+        curr = curr.prev;
+        count--;
+      }
+    } else {
+      let count = 0;
+      curr = this.head;
+      while (index !== count) {
+        curr = curr.next;
+        count++;
+      }
     }
 
     return curr;
