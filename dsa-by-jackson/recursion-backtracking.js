@@ -33,7 +33,10 @@ function winner(n, k, approach = 3) {
     const array = Array.from({ length: n }, (_, indx) => indx + 1);
     function helper(arr, startIndex) {
       if (arr.length === 1) return arr[0];
-      const indexToRemove = (startIndex + k - 1) % arr.length;
+
+      const indexToRemove = (startIndex + k - 1) % arr.length; // We are using this formula because, we are not using the circular DS, so there should be way to come back to the starting index
+      // if n = 5, k = 7, the first element to be removed [startIndex + k - 1] % 5 = 7 % 5 = 2, so 2nd element will be removed
+      // subtracting 1 because index starts from 0
       arr.splice(indexToRemove, 1);
       return helper(arr, indexToRemove);
     }
@@ -44,9 +47,10 @@ function winner(n, k, approach = 3) {
   if (approach === 2) {
     // will use the solution of sub-problem = [sp + k] % n
     // TC = O(N) SC = O(N)
+    // Think if you knew the winner for (n-1, k), you can find the winner for (n, k)
     function helper(n) {
       if (n === 1) return 0;
-      return (helper(n - 1) + k) % n;
+      return (helper(n - 1) + k) % n; // converting the subproblem solution to the main problem's solution
     }
 
     return helper(n) + 1;
@@ -55,11 +59,12 @@ function winner(n, k, approach = 3) {
   if (approach === 3) {
     // TC = O(N2) SC = O(1)
     let survivor = 0;
+    // we know that if n=1 the output will be 0 + 1 = 1
     for (let i = 2; i <= n; i++) {
       survivor = (survivor + k) % i;
     }
 
-    return survivor + 1;
+    return survivor + 1; // Adding one because index starts from 0
   }
 }
 
