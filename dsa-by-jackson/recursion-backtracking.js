@@ -128,3 +128,24 @@ function powerSum(list, depth = 1) {
 // Question 1: Permutations:
 // Given an array nums of distinct integers, return all the possible permutations.
 // You can return the answer in any order.
+
+function permutations(list) {
+  const result = [];
+  function helper(i) {
+    if (i === list.length - 1) {
+      result.push([...list]);
+      return;
+    }
+
+    for (let j = i; j < list.length; j++) {
+      [list[i], list[j]] = [list[j], list[i]];
+      helper(i + 1);
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+  }
+
+  helper(0);
+  return result;
+}
+
+console.log(permutations([1, 2, 3]));
