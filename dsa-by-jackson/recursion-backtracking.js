@@ -122,4 +122,9 @@ function powerSum(list, depth = 1) {
   return Math.pow(total, depth);
 }
 
-console.log(powerSum([1, 2, [7, [3, 4], 2]]));
+//----------------------------------------DAY 4----------------------------------------//
+//==========================================================================
+// Backtracking
+// Question 1: Permutations:
+// Given an array nums of distinct integers, return all the possible permutations.
+// You can return the answer in any order.
