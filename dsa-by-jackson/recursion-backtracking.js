@@ -148,4 +148,32 @@ function permutations(list) {
   return result;
 }
 
-console.log(permutations([1, 2, 3]));
+// Question 2:
+// Permutations 2: Given a collection of numbers, nums, that might contain duplicates,
+// return all possible unique permutations in any order.
+
+function uniquePermutations(list) {
+  const result = [];
+  function helper(i) {
+    if (i === list.length - 1) {
+      result.push([...list]);
+      return;
+    }
+
+    const hash = {};
+    for (let j = i; j < list.length; j++) {
+      if (!hash[list[j]]) {
+        hash[list[j]] = 1;
+        [list[i], list[j]] = [list[j], list[i]];
+        helper(i + 1);
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+    }
+  }
+
+  helper(0);
+  return result;
+}
+
+//----------------------------------------DAY 5----------------------------------------//
+//==========================================================================
