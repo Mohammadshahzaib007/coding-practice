@@ -234,3 +234,23 @@ function uniquePowerSet(list) {
 }
 
 // console.log(uniquePowerSet([1, 1, 2])); [ [ 1, 1, 2 ], [ 1, 1 ], [ 1, 2 ], [ 1 ], [ 2 ], [] ]
+
+//----------------------------------------DAY 6----------------------------------------//
+//==========================================================================
+// Question 1: Combinations: Given two integers n and k, return all possible combinations of k numbers
+//  chosen from the range [1, n].
+// You may return the answer in any order.
+
+function combinations() {
+  // yet to be implemented
+}
+
+// Question 2: Combinations Sum 1: Given an array of distinct integers candidates and a target integer target,
+// return a list of all unique combinations of candidates where the chosen numbers sum to target.
+// You may return the combinations in any order.
+
+// The same number may be chosen from candidates an unlimited number of times.
+// Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+function combinationSum() {
+  // yet to be implemeted
+}
