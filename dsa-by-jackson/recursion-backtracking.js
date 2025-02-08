@@ -202,3 +202,35 @@ function powerSet(list) {
 }
 
 // console.log(powerSet([1, 2, 3])); [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
+
+// Question 2: Subsets 2: Given an integer array nums that may contain duplicates,
+// return all possible subsets (the power set). The solution set must not contain duplicate subsets.
+// Return the solution in any order.
+
+function uniquePowerSet(list) {
+  const results = [];
+  list.sort((a, b) => a - b);
+
+  function helper(i, subset) {
+    if (i === list.length) {
+      results.push([...subset]);
+      return;
+    }
+
+    // Recursive case
+    // inclued
+    subset.push(list[i]);
+    helper(i + 1, subset);
+    subset.pop();
+
+    while (list[i] === list[i + 1] && i < list.length - 1) {
+      i++;
+    }
+    helper(i + 1, subset);
+  }
+
+  helper(0, []);
+  return results;
+}
+
+// console.log(uniquePowerSet([1, 1, 2])); [ [ 1, 1, 2 ], [ 1, 1 ], [ 1, 2 ], [ 1 ], [ 2 ], [] ]
