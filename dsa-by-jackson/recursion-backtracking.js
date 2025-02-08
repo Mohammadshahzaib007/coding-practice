@@ -177,3 +177,28 @@ function uniquePermutations(list) {
 
 //----------------------------------------DAY 5----------------------------------------//
 //==========================================================================
+// Question 1: Subsets: Given an integer array of unique elements,
+// return all possible subsets (the power set).
+// The solution set must not contain duplicate subsets. Return the solution in any order.
+function powerSet(list) {
+  const results = [];
+
+  function helper(i, subset) {
+    if (i === list.length) {
+      results.push(subset.slice());
+      return;
+    }
+    // Don't add
+    helper(i + 1, subset);
+
+    // Add
+    subset.push(list[i]);
+    helper(i + 1, subset);
+    subset.pop(); // Backtracking step
+  }
+
+  helper(0, []);
+  return results;
+}
+
+// console.log(powerSet([1, 2, 3])); [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
