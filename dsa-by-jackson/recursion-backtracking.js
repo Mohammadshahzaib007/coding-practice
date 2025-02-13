@@ -242,7 +242,6 @@ function uniquePowerSet(list) {
 // You may return the answer in any order.
 
 function combinations(n, k) {
-  // yet to be implemented
   const results = [];
 
   function helper(index, subset) {
@@ -251,7 +250,8 @@ function combinations(n, k) {
       return;
     }
 
-    for (let j = index; j <= n; j++) {
+    const need = k - subset.length; // Optimization
+    for (let j = index; j <= n - need + 1; j++) {
       subset.push(j);
       helper(j + 1, subset);
       subset.pop();
