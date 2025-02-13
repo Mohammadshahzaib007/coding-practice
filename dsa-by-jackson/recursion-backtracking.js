@@ -241,9 +241,27 @@ function uniquePowerSet(list) {
 //  chosen from the range [1, n].
 // You may return the answer in any order.
 
-function combinations() {
+function combinations(n, k) {
   // yet to be implemented
+  const results = [];
+
+  function helper(index, subset) {
+    if (subset.length === k) {
+      results.push([...subset]);
+      return;
+    }
+
+    for (let j = index; j <= n; j++) {
+      subset.push(j);
+      helper(j + 1, subset);
+      subset.pop();
+    }
+  }
+
+  helper(1, []);
+  return results;
 }
+// console.log(combinations(4, 2));
 
 // Question 2: Combinations Sum 1: Given an array of distinct integers candidates and a target integer target,
 // return a list of all unique combinations of candidates where the chosen numbers sum to target.
