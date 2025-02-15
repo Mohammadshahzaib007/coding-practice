@@ -308,7 +308,7 @@ function combinationSum2(list, target) {
   const results = [];
   list.sort((a, b) => a - b);
   function helper(startIndex, currSet, currSum) {
-    if (target === currSum) {
+    if (target === currSum || startIndex > candidates.length - 1) {
       results.push([...currSet]);
       return;
     }
@@ -332,9 +332,40 @@ function combinationSum2(list, target) {
   return results;
 }
 // check for target 4 as well
-console.log(combinationSum2([3, 5, 2, 1, 3], 4)); // [[1,3,3], [5,2]]
+// console.log(combinationSum2([3, 5, 2, 1, 3], 4)); // [[1,3,3], [5,2]]
 
 // Question 2: Combinations Sum 3: Find all valid combinations of k numbers that sum up to n such that the following conditions are true:
 // •Only numbers 1 through 9 are used.
 // •Each number is used at most once.
 // Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
+
+function combinationSum3(k, n) {
+  const results = [];
+
+  function helper(startIndex, currSet, currSum) {
+    if (currSum === n && currSet.length === k) {
+      results.push([...currSet]);
+      return;
+    }
+
+    if (currSum > n) {
+      return;
+    }
+
+    const hash = {};
+    for (let j = startIndex; j <= 9; j++) {
+      if (!hash[j]) {
+        hash[j] = 1;
+        currSet.push(j);
+        helper(j + 1, currSet, j + currSum);
+        currSet.pop();
+      }
+    }
+  }
+
+  helper(1, [], 0);
+
+  return results;
+}
+
+// console.log(combinationSum3(3, 6));
