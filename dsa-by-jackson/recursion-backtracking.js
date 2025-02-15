@@ -304,6 +304,36 @@ function combinationSum(list, target) {
 // Each number in candidates may only be used once in the combination.
 // Note: The solution set must not contain duplicate combinations.
 
+function combinationSum2(list, target) {
+  const results = [];
+  list.sort((a, b) => a - b);
+  function helper(startIndex, currSet, currSum) {
+    if (target === currSum) {
+      results.push([...currSet]);
+      return;
+    }
+
+    if (currSum > target) {
+      return;
+    }
+
+    const hash = {};
+    for (let j = startIndex; j < list.length; j++) {
+      const element = list[j];
+      if (!hash[element]) {
+        hash[element] = 1;
+        currSet.push(element);
+        helper(j + 1, currSet, element + currSum);
+        currSet.pop();
+      }
+    }
+  }
+  helper(0, [], 0);
+  return results;
+}
+// check for target 4 as well
+console.log(combinationSum2([3, 5, 2, 1, 3], 4)); // [[1,3,3], [5,2]]
+
 // Question 2: Combinations Sum 3: Find all valid combinations of k numbers that sum up to n such that the following conditions are true:
 // •Only numbers 1 through 9 are used.
 // •Each number is used at most once.
