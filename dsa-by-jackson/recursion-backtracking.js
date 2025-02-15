@@ -269,6 +269,29 @@ function combinations(n, k) {
 
 // The same number may be chosen from candidates an unlimited number of times.
 // Two combinations are unique if the frequency of at least one of the chosen numbers is different.
-function combinationSum() {
-  // yet to be implemeted
+function combinationSum(list, target) {
+  const results = [];
+
+  function helper(startIndex, currSet, currSum) {
+    if (target === currSum) {
+      results.push([...currSet]);
+      return;
+    }
+
+    if (currSum > target) {
+      return;
+    }
+
+    for (let j = startIndex; j < list.length; j++) {
+      currSet.push(list[j]);
+      helper(j, currSet, list[j] + currSum);
+      currSet.pop();
+    }
+  }
+
+  helper(0, [], 0);
+
+  return results;
 }
+
+console.log(combinationSum([2, 3, 8, 9], 9));
