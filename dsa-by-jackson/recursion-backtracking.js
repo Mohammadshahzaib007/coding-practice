@@ -369,3 +369,17 @@ function combinationSum3(k, n) {
 }
 
 // console.log(combinationSum3(3, 6));
+
+//----------------------------------------DAY 8----------------------------------------//
+//==========================================================================
+
+// Question 1: Sudoku Solver: Write a program to solve a Sudoku puzzle by filling the empty cells.
+// A sudoku solution must satisfy all of the following rules:
+// 1.Each of the digits 1-9 must occur exactly once in each row.
+// 2.Each of the digits 1-9 must occur exactly once in each column.
+// 3.Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
+// The '.' character indicates empty cells.
+
+// Question 2: N Queens: The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+// Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+// Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
