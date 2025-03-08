@@ -380,9 +380,64 @@ function combinationSum3(k, n) {
 // 3.Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
 // The '.' character indicates empty cells.
 function solveSudoku(board) {
-  function helper() {}
+  function isValid(board, row, col, num) {
+    for (let x = 0; x < 9; x++) {
+      // Check row and column: The number must not already exist in the same row and column.
+      if (board[x][col] === num || board[row][x] === num) {
+        return false;
+      }
 
-  helper();
+      // Calculate the start row and column index for the 3x3 sub-box.
+      let r = 3 * Math.floor(row / 3) + Math.floor(x / 3);
+      let c = 3 * Math.floor(col / 3) + (x % 3);
+
+      // Check 3x3 sub-box: The number must not already exist in the same 3x3 sub-box.
+      if (board[r][c] === num) {
+        return false;
+      }
+    }
+
+    // If the number 'num' is not found in the same row, column, and 3x3 sub-box, it is valid.
+    return true;
+  }
+
+  function helper(board) {
+    for (let row = 0; row < 9; row++) {
+      for (let col = 0; col < 9; col++) {
+        // If the cell is empty ('.').
+        if (board[row][col] === ".") {
+          // Try placing each number from 1 to 9 in the empty cell.
+          for (let num = 1; num <= 9; num++) {
+            // Convert number to string for comparison, if needed, depending on how the board is set up
+            let char = num.toString();
+            // Check if the number is valid in the current position.
+            if (isValid(board, row, col, char)) {
+              // Place the number in the cell.
+              board[row][col] = char;
+
+              // Recursively attempt to solve the rest of the board with this number placed.
+              if (helper(board)) {
+                return true;
+              }
+
+              // If placing the number does not lead to a solution, reset the cell and try the next number.
+              board[row][col] = ".";
+            }
+          }
+
+          // If no number from 1 to 9 can be placed in this cell, backtrack.
+          return false;
+        }
+      }
+    }
+
+    // If the entire board is filled without conflicts, the puzzle is solved.
+    return true;
+  }
+
+  // Start the solving process.
+  helper(board);
+  // console.log(JSON.stringify(board, null, 2));
 }
 
 // Sudoku board
